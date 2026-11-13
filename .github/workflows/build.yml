@@ -1,0 +1,36 @@
+yaml
+name: Build EXE
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Abhängigkeiten & PyInstaller installieren
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+          if (Test-Path requirements.txt) { pip install -r requirements.txt }
+
+      - name: EXE mit PyInstaller erstellen
+        run: |
+          pyinstaller --onefile --noconsole VACC-LZBB.py
+
+      - name: Fertige EXE hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows-Executable
+          path: dist/dein_skript.exe
