@@ -13,13 +13,12 @@ import requests
 from datetime import datetime
 from win32com.client import Dispatch
 import webbrowser
-import pandas as pd
 import psutil
 from bs4 import BeautifulSoup
 
-URL = "" # Main online Folder for all files
-FIR = "" # Shortcut as called on GNG
-Packagename = "Installer" # Packagename as called on GNG
+URL = "https://vacc-slovakia.lima-city.at/Installer/"
+FIR = "LZBB"
+Packagename = "Installer"
 Testing = False  # Change the base path to Meipass for exe file
 
 
@@ -60,30 +59,32 @@ translations = {
         "Choose_a_profile": "Choose a profile",
         "start": "Start",
         "sectorfile_version": "ATTENTION!\n\nDue to navdata provider changes, you must manually download the sectorfile. When this message is closed, your web browser will open the relevant AeroNav GNG page.\nPlease log in with your Navigraph and VATSIM accounts, download the file and extract its contents in the folder that will also be opened.\nYou may then press Start in the main window again.",
-    },    
-    "Deutsch": {
-        "custom_files": "Benutzerdefinierte Dateien ",
-        "setting": "Einstellungen",
-        "language": "Sprache",
-        "name": "Name:",
+    },
+    "Slovak": {
+        "custom_files": "lastné súbory",
+        "setting": "Nastavenie",
+        "language": "Jazyk",
+        "name": "Meno:",
         "vatsim_id": "Vatsim ID:",
-        "vatsim_password": "Vatsim Passwort:",
-        "rating": "Bewertung:",
-        "hoppie_code": "Hoppie-Code:",
-        "afv_path": "Pfad für das Audio Tool von Vatsim:",
-        "browse": "Durchsuchen",
-        "save": "Speichern",
-        "missing_data_title": "Fehlende Daten",
-        "missing_data": "Mindestens Name, Vatsim ID, Vatsim Passwort und Bewertung müssen festgelegt werden.",
-        "update_available": "Update verfügbar",
-        "installer_version": "Eine neuere Version des Installers ist verfügbar.",
-        "error_title": "Fehler",
-        "error installercheck": "Keine Internetverbindung oder Online-Version nicht gefunden.",
-        "fresh_install": "Neuinstallation",
-        "Choose_a_profile": "Profil auswählen",
-        "start": "Starten",
-        "sectorfile_version": "ACHTUNG!\n\nAufgrund von Änderungen beim Navdata-Anbieter müssen Sie die Sektor-Datei manuell herunterladen. Wenn diese Nachricht geschlossen wird, öffnet Ihr Webbrowser die entsprechende AeroNav GNG-Seite.\nBitte melden Sie sich mit Ihren Navigraph- und VATSIM-Konten an, laden Sie die Datei herunter und extrahieren Sie deren Inhalt in den ebenfalls geöffneten Ordner.\nAnschließend können Sie im Hauptfenster erneut auf Starten drücken.",
-     }
+        "vatsim_password": "Vatsim heslo:",
+        "rating": "Hodnotenie:",
+        "hoppie_code": "Hoppie kód:",
+        "afv_path": "Cesta pre Audio for Vatsim:",
+        "browse": "Prehľadávať",
+        "save": "Uložiť",
+        "missing_data_title": "Chýbajúce údaje",
+        "missing_data": "Musí byť nastavené minimálne meno, Vatsim ID, Vatsim heslo a hodnotenie.",
+        "update_available": "K dispozícii je aktualizácia",
+        "installer_version": "Je dostupná novšia verzia inštalátora.\nStlačením tlačidla OK sa spustí sťahovanie",
+        "error_title": "Chyba",
+        "error installercheck": "Žiadne pripojenie na internet alebo nebola nájdená online verzia.",
+        "error_msg": "Došlo k chybe",
+        "fresh_install": "Nová inštalácia",
+        "Choose_a_profile": "Vyberte profil",
+        "start": "Štart",
+        "sectorfile_version": "POZOR!\n\nZ dôvodu zmien poskytovateľa navdata si musíte manuálne stiahnuť sektorový súbor. Po zatvorení tejto správy sa vo webovom prehliadači otvorí príslušná stránka AeroNav GNG.\nPrihláste sa pomocou svojich účtov Navigraph a VATSIM, stiahnite si súbor a extrahujte jeho obsah do priečinka, ktorý sa tiež otvorí.\nPotom môžete v hlavnom okne znova stlačiť tlačidlo Štart.",
+
+    }
 }
 
 def translate(key):
@@ -677,3 +678,4 @@ installercheck()
 # Hauptfenster starten
 root.iconbitmap(exe_path)
 root.mainloop()
+
